@@ -1,0 +1,29 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: PROGRAM-SERVICE
+  cloud:
+    discovery:
+      enabled: true
+
+  datasource:
+    url: jdbc:h2:mem:program-db
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update  # Автоматически создавать и обновлять таблицы
+    show-sql: true      # Показывать SQL-запросы в логах
+  h2:
+    console:
+      enabled: true      # Включить H2-консоль (http://localhost:8082/h2-console)
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka # Адрес Eureka Server
+    register-with-eureka: true  # Регистрировать сервис в Eureka
+    fetch-registry: true        # Получать реестр сервисов из Eureka
